@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #color-picker {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <input type="color" id="color-picker" value="#3498db">
+        <br>
+        <button id="change-color-btn">Change Background</button>
+    </div>
+    <script>
+        const colorPicker = document.getElementById('color-picker');
+        const changeColorButton = document.getElementById('change-color-btn');
+        changeColorButton.addEventListener('click', function() {
+            const selectedColor = colorPicker.value;
+            document.body.style.backgroundColor = selectedColor;
+        });
+    </script>
+
+</body>
+</html>

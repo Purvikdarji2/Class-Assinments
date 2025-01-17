@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Division Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 500px; /* Adjust container width as needed */
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slider div {
+      width: 100px; 
+      height: 100px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .div1 { background-color: #3498db; } 
+    .div2 { background-color: #e74c3c; }
+    .div3 { background-color: #2ecc71; } 
+    .div4 { background-color: #f39c12; } 
+    .div5 { background-color: #8e44ad; } 
+
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    #prev {
+      left: 10px;
+    }
+
+    #next {
+      right: 10px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="slider" id="slider">
+      <div class="div1">1</div>
+      <div class="div2">2</div>
+      <div class="div3">3</div>
+      <div class="div4">4</div>
+      <div class="div5">5</div>
+    </div>
+    <button id="prev">←</button>
+    <button id="next">→</button>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const slider = document.getElementById('slider');
+    const totalDivisions = slider.children.length;
+
+    document.getElementById('prev').addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = totalDivisions - 1;
+      }
+      updateSliderPosition();
+    });
+
+    document.getElementById('next').addEventListener('click', function() {
+      if (currentIndex < totalDivisions - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateSliderPosition();
+    });
+
+    function updateSliderPosition() {
+      const slideWidth = 100; // Each division is 100px wide
+      const offset = -currentIndex * slideWidth;
+      slider.style.transform = `translateX(${offset}px)`;
+    }
+  </script>
+
+</body>
+</html>

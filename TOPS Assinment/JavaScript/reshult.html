@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet for Information Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .container {
+            border: 1px solid #000;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 350px;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        td {
+            padding: 8px 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .result {
+            text-align: center;
+        }
+        .result input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .result input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .summary {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+        .summary p {
+            margin: 5px 0;
+        }
+        .fail {
+            color: red;
+        }
+        .pass {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Marksheet for Information Technology</h1>
+        <h2>Enter Marks</h2>
+        <table>
+            <tr>
+                <td>1. C Language</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>2. C++ Language</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>3. Database</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>4. HTML</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>5. CSS</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>6. PHP</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+            <tr>
+                <td>7. Core Java</td>
+                <td><input type="text" class="marks" onkeypress="allowNumbersOnly(event)" oninput="validateInput(this)"></td>
+            </tr>
+        </table>
+        <div class="result">
+            <input type="button" value="Calculate Result" onclick="calculateResult()">
+        </div>
+        <div class="summary">
+            <p>Total: <b id="total"></b></p>
+            <p>Percentage: <b id="percentage"></b></p>
+            <p>Status: <b id="status"></b></p>
+        </div>
+    </div>
+
+    <script>
+        function allowNumbersOnly(event) {
+            const charCode = event.charCode || event.keyCode;
+            if (charCode < 48 || charCode > 57) {
+                event.preventDefault();
+            }
+        }
+
+        function validateInput(input) {
+            const value = input.value;
+            if (value === "" || isNaN(value) || value < 0 || value > 100) {
+                input.style.borderColor = "red";
+            } else {
+                input.style.borderColor = "green";
+            }
+        }
+
+        function calculateResult() {
+            const marksInputs = document.querySelectorAll(".marks");
+            let total = 0;
+            const maxMarks = 700; 
+            let isFail = false;
+
+            for (const input of marksInputs) {
+                if (input.value === "" || isNaN(input.value) || input.value < 0 || input.value > 100) {
+                    alert("Please fill all fields with valid marks (0-100).");
+                    return;
+                }
+                const marks = parseInt(input.value);
+                if (marks < 35) {
+                    isFail = true;
+                }
+                total += marks;
+            }
+
+            const percentage = (total / maxMarks) * 100;
+            document.getElementById("total").innerText = `${total} / ${maxMarks}`;
+            document.getElementById("percentage").innerText = `${percentage.toFixed(2)}%`;
+            document.getElementById("status").innerText = isFail ? "Fail" : "Pass";
+            document.getElementById("status").className = isFail ? "fail" : "pass";
+        }
+    </script>
+</body>
+</html>
