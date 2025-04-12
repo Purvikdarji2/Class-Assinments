@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Assignment 1 & 2 - Customized Colors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#1e1b4b',        
+            light: '#4f46e5',       
+            extralight: '#c7d2fe',  
+          },
+          spacing: {
+            '5': '5rem',
+            '10': '10rem',
+            '12': '12rem',
+            '15': '15rem',
+          },
+          boxShadow: {
+            glow: '0 0 15px rgba(0, 0, 0, 0.2)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-extralight">
+
+  <div
+    class="bg-dark text-extralight p-10 max-w-4xl mx-auto text-xl rounded-2xl shadow-glow my-12 transition duration-500 hover:scale-[1.01]">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a reprehenderit error consequuntur temporibus
+      harum culpa ad deserunt, labore incidunt, placeat expedita aspernatur ex explicabo iste quis aliquid, quasi quod!
+    </p>
+  </div>
+
+  <div class="bg-dark py-10 px-4 flex flex-col lg:flex-row justify-center items-center gap-8">
+
+    <button
+      class="bg-extralight text-light px-10 py-4 text-2xl rounded-2xl font-semibold shadow-md hover:bg-white hover:text-dark transition-all duration-300 transform hover:scale-105">
+      Click Here
+    </button>
+
+    <div
+      class="bg-extralight text-light capitalize rounded-2xl shadow-lg p-10 w-full max-w-md hover:shadow-2xl hover:scale-[1.02] transition duration-300">
+      <p class="text-center">
+        <b class="text-2xl block mb-4">Card Title</b>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dolor rem dolore adipisci quaerat minima facilis
+        pariatur nesciunt deserunt magni.
+      </p>
+    </div>
+
+    <div
+      class="bg-extralight text-light capitalize rounded-2xl shadow-lg p-10 w-full max-w-md hover:shadow-2xl hover:scale-[1.02] transition duration-300">
+      <p class="text-center">
+        <b class="text-2xl block mb-4">Card Title</b>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dolor rem dolore adipisci quaerat minima facilis
+        pariatur nesciunt deserunt magni.
+      </p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

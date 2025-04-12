@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Tailwind Assignment 3 (Login)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#312e81', // indigo-900
+            accent: '#6366f1',  // indigo-500
+            soft: '#e0e7ff',    // indigo-100
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-soft min-h-screen flex items-center justify-center">
+
+  <div class="w-full max-w-md p-8 rounded-2xl shadow-2xl bg-primary text-soft font-serif mx-4">
+    <h2 class="text-4xl font-bold text-center mb-8">Log In</h2>
+    <form action="#" method="get" class="space-y-6">
+
+      <div>
+        <label for="email" class="block text-lg mb-2">Email ID:</label>
+        <input type="text" id="email" placeholder="Enter your Email ID"
+          class="w-full px-4 py-3 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent" />
+      </div>
+
+      <div>
+        <label for="password" class="block text-lg mb-2">Password:</label>
+        <input type="password" id="password" placeholder="Enter your Password"
+          class="w-full px-4 py-3 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent" />
+      </div>
+
+      <div class="text-center">
+        <button type="submit"
+          class="bg-accent hover:bg-white hover:text-primary transition-all duration-300 px-8 py-3 text-xl font-semibold rounded-xl text-white shadow-lg">
+          Log In
+        </button>
+        <a href="#" class="text-lg ms-4 hover:underline hover:text-accent">Sign Up</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
